@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Good Fast Cheap</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .frame {
+            width: 400px;
+            height: 500px;
+            background-color: lightskyblue;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .content {
+            width: 400px;
+            height: 200px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        .rectangle {
+            width: 200px;
+            height: 50px;
+            border-radius: 20px;
+            background-color: darkgray;
+            position: relative;
+            cursor: pointer;
+            align-items: center;
+            display: flex;
+            margin-right: 30px;
+        }
+        .circular-button {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: grey;
+            position: relative;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+<div class="frame">
+    <div class="content">
+        <div id="Rec1" class="rectangle">
+            <button id="Button1" class="circular-button" value ="0" onclick="toggleButton(1)"></button>
+        </div>
+        <h1 style="font-family: Arial">GOOD</h1>
+    </div>
+    <div class="content">
+        <div id="Rec2" class="rectangle">
+            <button id="Button2" class="circular-button" value ="0" onclick="toggleButton(2)"></button>
+        </div>
+        <h1 style="font-family: Arial">FAST</h1>
+    </div>
+    <div  class="content">
+        <div id="Rec3" class="rectangle">
+            <button id="Button3" class="circular-button" value ="0" onclick="toggleButton(3)"></button>
+        </div>
+        <h1 style="font-family: Arial">CHEAP</h1>
+    </div>
+</div>
+<script>
+    function turnOnButton(numButton){
+        var button=document.getElementById("Button"+numButton);
+        var rectange=document.getElementById("Rec"+numButton);
+        button.style.transform = `translateX(${100}px)`;
+        button.value = 1;
+        console.log(numButton);
+        switch (numButton){
+            case 1:
+                button.style.backgroundColor = "green";
+                rectange.style.backgroundColor = "darkgreen";
+                break;
+            case 2:
+                button.style.backgroundColor = "blue";
+                rectange.style.backgroundColor = "darkblue";
+                break;
+            default:
+                button.style.backgroundColor = "red";
+                rectange.style.backgroundColor = "darkred";
+                break;
+        }
+    }
+    function turnOffButton(numButton){
+        var button=document.getElementById("Button"+numButton);
+        var rectange=document.getElementById("Rec"+numButton);
+        button.style.transform = `translateX(${0}px)`;
+        button.style.backgroundColor = "grey";
+        rectange.style.backgroundColor = "darkgray";
+        button.value = 0;
+    }
+    function checkButton(currentButton){
+        var button1=document.getElementById("Button1");
+        var button2=document.getElementById("Button2");
+        var button3=document.getElementById("Button3");
+        if (button1.value == "1" && button2.value == "1" && button3.value == "1"){
+            if (currentButton == "1") turnOffButton(3);
+            else
+                if (currentButton == "2") turnOffButton(1);
+                else turnOffButton(2);
+        }
+    }
+    function toggleButton(numButton) {
+        var button=document.getElementById("Button"+numButton);
+        console.log(button.value);
+        if (button.value == "0") {
+            turnOnButton(numButton);
+            checkButton(numButton);
+        }
+        else {
+            turnOffButton(numButton);
+        }
+        console.log(button.value);
+    }
+</script>
+</body>
+</html>
