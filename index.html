@@ -122,7 +122,6 @@
     //Hàm kiểm tra trạng thái bật/tắt, nếu đang tắt thì bật lên và ngược lại
     function toggleButton(numButton) {
         var button=document.getElementById("Button"+numButton);
-        console.log(button.value);
         if (button.value == "0") {
             turnOnButton(numButton);
             checkButton(numButton);
