@@ -74,6 +74,7 @@
     </div>
 </div>
 <script>
+    //Bật nút button
     function turnOnButton(numButton){
         var button=document.getElementById("Button"+numButton);
         var rectange=document.getElementById("Rec"+numButton);
@@ -95,6 +96,8 @@
                 break;
         }
     }
+
+    //Tắt nút button
     function turnOffButton(numButton){
         var button=document.getElementById("Button"+numButton);
         var rectange=document.getElementById("Rec"+numButton);
@@ -103,6 +106,8 @@
         rectange.style.backgroundColor = "darkgray";
         button.value = 0;
     }
+
+    //Kiểm tra ba nút có cùng bật hay không, nếu có thì tắt một nút
     function checkButton(currentButton){
         var button1=document.getElementById("Button1");
         var button2=document.getElementById("Button2");
@@ -114,6 +119,8 @@
                 else turnOffButton(2);
         }
     }
+
+    //Hàm kiểm tra trạng thái bật/tắt, nếu đang tắt thì bật lên và ngược lại
     function toggleButton(numButton) {
         var button=document.getElementById("Button"+numButton);
         console.log(button.value);
